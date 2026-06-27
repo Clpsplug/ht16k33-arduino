@@ -12,7 +12,7 @@
   #include <Wire.h>
   #include "Sprite16.h"
   
-  // different commands
+// different commands
   #define HT16K33_CMD_RAM     0x00
   #define HT16K33_CMD_KEYS    0x40
   #define HT16K33_CMD_SETUP   0x80
@@ -32,30 +32,31 @@
   class HT16K33
   {
     public:
-      void init(uint8_t addr);
+      explicit HT16K33();
+      bool init(uint8_t addr);
       
       // brightness control
-      void setBrightness(uint8_t brightness);
+      void setBrightness(uint8_t brightness) const;
       
       // blink controls
-      void setBlink(uint8_t blink);
+      void setBlink(uint8_t blink) const;
       
       // orientation
-      void resetOrientation(void);
-      void reverse(void);
-      void flipVertical(void);
-      void flipHorizontal(void);
+      void resetOrientation();
+      void reverse();
+      void flipVertical();
+      void flipHorizontal();
       
       // buffer stuff
-      void clear(void);
-      void setPixel(uint8_t row, uint8_t col, uint8_t onff);
+      void clear();
+      void setPixel(uint8_t row, uint8_t col, uint8_t val);
       void setRow(uint8_t row, uint16_t value);
       void setColumn(uint8_t col, uint8_t value);
       void drawSprite16(Sprite16 data, uint8_t colOffset, uint8_t rowOffset);
       void drawSprite16(Sprite16 data);
       
       // read/write
-      void write(void);
+      void write();
       
     private:
       uint16_t *_buffer;
@@ -64,7 +65,7 @@
       bool     _vFlipped;
       bool     _hFlipped;
       
-      void writeRow(uint8_t row);
+      void writeRow(uint8_t row) const;
       
   };
   

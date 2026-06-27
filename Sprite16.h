@@ -17,9 +17,9 @@
   {
     public:
       Sprite16(uint8_t width, uint8_t height, uint16_t data, ...);
-      uint8_t width();
-      uint8_t height();
-      uint16_t readRow(uint8_t row);
+      uint8_t width() const;
+      uint8_t height() const;
+      uint16_t readRow(uint8_t row) const;
   
     private:
       uint8_t   _height;
